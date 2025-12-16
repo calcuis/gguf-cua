@@ -25,12 +25,6 @@ fara_agent_logger.propagate = False  # Don't propagate to root logger
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_ENDPOINT_CONFIG = {
-    "model": "fara-7b",
-    "base_url": "http://127.0.0.1:1234/v1",
-    "api_key": "not-needed",
-}
-
 async def run_fara_agent(
     initial_task: str = None,
     endpoint_config: Dict[str, str] = None,
@@ -182,7 +176,19 @@ def main():
             "BROWSERBASE_PROJECT_ID"
         ), "BROWSERBASE_API_KEY and BROWSERBASE_PROJECT_ID environment variables must be set to use browserbase"
 
-    endpoint_config = DEFAULT_ENDPOINT_CONFIG
+    endpoint_config = {}
+    try:
+        with open("config.json", "r") as f:
+            endpoint_config = json.load(f)
+    except FileNotFoundError:
+        print("config.json not found. Please create it with the endpoint configuration.")
+        return
+    assert (
+        "api_key" in endpoint_config
+        and "base_url" in endpoint_config
+        and "model" in endpoint_config
+    ), "config.json must contain api_key, base_url, and model fields"
+
     if args.endpoint_config:
         with open(args.endpoint_config, "r") as f:
             endpoint_config = json.load(f)
