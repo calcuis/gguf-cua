@@ -5,9 +5,7 @@ import json
 import os
 
 from typing import List, Literal, Union
-
 from .schema import ASSISTANT, FUNCTION, SYSTEM, USER, ContentItem, Message
-
 
 class NousFnCallPrompt:
     def __init__(self, template_name: str = "default"):

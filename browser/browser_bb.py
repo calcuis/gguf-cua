@@ -19,7 +19,6 @@ from playwright.async_api import (
 
 from .playwright_controller import PlaywrightController
 
-
 class BrowserBB:
     """Manages browser instance, context, and page lifecycle."""
 

@@ -26,7 +26,7 @@ fara_agent_logger.propagate = False  # Don't propagate to root logger
 logger = logging.getLogger(__name__)
 
 DEFAULT_ENDPOINT_CONFIG = {
-    "model": "microsoft_fara-7b",
+    "model": "fara-7b",
     "base_url": "http://127.0.0.1:1234/v1",
     "api_key": "not-needed",
 }

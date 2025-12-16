@@ -1,7 +1,6 @@
+
 import math
-
 from typing import Union, Tuple
-
 from .qwen_helpers.base_tool import BaseTool
 from .qwen_helpers.fncall_prompt import NousFnCallPrompt
 from .qwen_helpers.schema import (
@@ -13,7 +12,6 @@ IMAGE_FACTOR = 28
 MIN_PIXELS = 4 * 28 * 28
 MAX_PIXELS = 16384 * 28 * 28
 MAX_RATIO = 200
-
 
 # @register_tool("computer_use")
 class FaraComputerUse(BaseTool):
@@ -181,21 +179,17 @@ The action to perform. The available actions are:
     def _terminate(self, status: str):
         raise NotImplementedError()
 
-
 def round_by_factor(number: int, factor: int) -> int:
     """Returns the closest integer to 'number' that is divisible by 'factor'."""
     return round(number / factor) * factor
-
 
 def ceil_by_factor(number: int, factor: int) -> int:
     """Returns the smallest integer greater than or equal to 'number' that is divisible by 'factor'."""
     return math.ceil(number / factor) * factor
 
-
 def floor_by_factor(number: int, factor: int) -> int:
     """Returns the largest integer less than or equal to 'number' that is divisible by 'factor'."""
     return math.floor(number / factor) * factor
-
 
 def smart_resize(
     height: int,

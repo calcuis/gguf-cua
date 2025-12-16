@@ -116,7 +116,6 @@ def handle_target_closed(max_retries: int = 2, timeout_secs: int = 30):
 
     return decorator
 
-
 async def _recover_page(page: Page, timeout_secs: int = 30, logger=None) -> None:
     """
     Attempt to recover a closed page by reloading it.
@@ -167,7 +166,6 @@ async def _recover_page(page: Page, timeout_secs: int = 30, logger=None) -> None
             raise Exception(
                 f"playwright_controller._recover_page(): All recovery methods failed. Reload error: {e}, Goto error: {goto_error}"
             )
-
 
 # Enhanced version that can handle browser context recreation
 def handle_target_closed_with_context(max_retries: int = 2, timeout_secs: int = 30):
@@ -244,7 +242,6 @@ def handle_target_closed_with_context(max_retries: int = 2, timeout_secs: int = 
         return wrapper
 
     return decorator
-
 
 class PlaywrightController:
     def __init__(

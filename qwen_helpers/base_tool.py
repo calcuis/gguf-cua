@@ -3,10 +3,8 @@
 import json
 from abc import ABC, abstractmethod
 from typing import List, Optional, Union
-
 from .schema import ContentItem
 from .utils import has_chinese_chars, json_loads
-
 
 def is_tool_schema(obj: dict) -> bool:
     """
@@ -56,7 +54,6 @@ def is_tool_schema(obj: dict) -> bool:
     except jsonschema.exceptions.ValidationError:
         pass
     return True
-
 
 class BaseTool(ABC):
     name: str = ""
