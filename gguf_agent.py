@@ -28,6 +28,7 @@ from .cua_types import (
 )
 from .utils import get_trimmed_url
 
+# Source: https://github.com/microsoft/fara/blob/main/src/fara/fara_agent.py
 
 class FaraAgent:
     DEFAULT_START_PAGE = "https://www.bing.com/"

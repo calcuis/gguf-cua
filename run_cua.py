@@ -8,7 +8,7 @@ from typing import Dict
 from pathlib import Path
 import json
 
-# Configure logging to only show logs from fara.fara_agent
+# Configure logging to only show logs from the selected agent/model
 logging.basicConfig(
     level=logging.CRITICAL,
     format="%(message)s",
@@ -104,7 +104,6 @@ async def run_fara_agent(
     finally:
         # Close the agent and browser
         await agent.close()
-
 
 def main():
     """CLI entry point for fara command."""
