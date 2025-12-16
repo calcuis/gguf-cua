@@ -7,7 +7,6 @@ import logging
 from typing import Dict
 from pathlib import Path
 import json
-
 config = os.path.join(os.path.dirname(__file__), 'config.json')
 
 # Configure logging to only show logs from the selected agent/model
@@ -226,3 +225,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
