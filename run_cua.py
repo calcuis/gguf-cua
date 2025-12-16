@@ -8,6 +8,8 @@ from typing import Dict
 from pathlib import Path
 import json
 
+config = os.path.join(os.path.dirname(__file__), 'config.json')
+
 # Configure logging to only show logs from the selected agent/model
 logging.basicConfig(
     level=logging.CRITICAL,
@@ -176,10 +178,14 @@ def main():
             "BROWSERBASE_PROJECT_ID"
         ), "BROWSERBASE_API_KEY and BROWSERBASE_PROJECT_ID environment variables must be set to use browserbase"
 
-    endpoint_config = {}
+    # endpoint_config = {}
+    # config = os.path.join(os.path.dirname(__file__), 'config.json')
     try:
-        with open("config.json", "r") as f:
-            endpoint_config = json.load(f)
+        with open("config", "r") as f:
+            data = json.load(f)
+        endpoint_config = {}
+        for key, value in data[0].items():
+            endpoint_config[key] = value
     except FileNotFoundError:
         print("config.json not found. Please create it with the endpoint configuration.")
         return
