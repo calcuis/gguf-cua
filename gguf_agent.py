@@ -1,21 +1,4 @@
-# import io
-# import os
-# import base64
-# import asyncio
-# from PIL import Image
-# from typing import Any
-# from typing import List, Tuple, Dict
-# from .cua_types import (
-#     LLMMessage,
-#     SystemMessage,
-#     UserMessage,
-#     AssistantMessage,
-#     ImageObj,
-#     ModelResponse,
-#     FunctionCall,
-#     message_to_openai_format,
-#     WebSurferEvent,
-# )
+
 from playwright.async_api import Page
 import logging, asyncio
 import json, base64
