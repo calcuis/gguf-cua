@@ -1,13 +1,11 @@
 import asyncio
 import argparse
-import os
-from .gguf_agent import FaraAgent
-from .browser.browser_bb import BrowserBB
-import logging
+import os, json, logging
 from typing import Dict
 from pathlib import Path
-import json
-config = os.path.join(os.path.dirname(__file__), 'config.json')
+from .gguf_agent import FaraAgent
+from .browser.browser_bb import BrowserBB
+from .api_setting import DEFAULT_ENDPOINT_CONFIG
 
 # Configure logging to only show logs from the selected agent/model
 logging.basicConfig(
@@ -25,6 +23,12 @@ fara_agent_logger.addHandler(handler)
 fara_agent_logger.propagate = False  # Don't propagate to root logger
 
 logger = logging.getLogger(__name__)
+
+# DEFAULT_ENDPOINT_CONFIG = {
+#     "model": "fara-7b",
+#     "base_url": "http://127.0.0.1:1234/v1",
+#     "api_key": "not-needed",
+# }
 
 async def run_fara_agent(
     initial_task: str = None,
@@ -177,23 +181,7 @@ def main():
             "BROWSERBASE_PROJECT_ID"
         ), "BROWSERBASE_API_KEY and BROWSERBASE_PROJECT_ID environment variables must be set to use browserbase"
 
-    # endpoint_config = {}
-    # config = os.path.join(os.path.dirname(__file__), 'config.json')
-    try:
-        with open("config", "r") as f:
-            data = json.load(f)
-        endpoint_config = {}
-        for key, value in data[0].items():
-            endpoint_config[key] = value
-    except FileNotFoundError:
-        print("config.json not found. Please create it with the endpoint configuration.")
-        return
-    assert (
-        "api_key" in endpoint_config
-        and "base_url" in endpoint_config
-        and "model" in endpoint_config
-    ), "config.json must contain api_key, base_url, and model fields"
-
+    endpoint_config = DEFAULT_ENDPOINT_CONFIG
     if args.endpoint_config:
         with open(args.endpoint_config, "r") as f:
             endpoint_config = json.load(f)
@@ -225,4 +213,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
