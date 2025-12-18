@@ -21,14 +21,7 @@ handler.setLevel(logging.INFO)
 handler.setFormatter(logging.Formatter("%(message)s"))
 fara_agent_logger.addHandler(handler)
 fara_agent_logger.propagate = False  # Don't propagate to root logger
-
 logger = logging.getLogger(__name__)
-
-# DEFAULT_ENDPOINT_CONFIG = {
-#     "model": "fara-7b",
-#     "base_url": "http://127.0.0.1:1234/v1",
-#     "api_key": "not-needed",
-# }
 
 async def run_fara_agent(
     initial_task: str = None,
