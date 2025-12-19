@@ -9,7 +9,7 @@ cua --task "whats the weather in san francisco now" --headful
 
 ![search](search.gif)
 
-note: `playwright` and `tenacity` needed
+note: `playwright` and `tenacity` needed; install it if you don't have (see below)
 ```
 pip install playwright, tenacity
 playwright install
