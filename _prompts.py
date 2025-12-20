@@ -1,9 +1,9 @@
 
 import math
 from typing import Union, Tuple
-from .qwen_helpers.base_tool import BaseTool
-from .qwen_helpers.fncall_prompt import NousFnCallPrompt
-from .qwen_helpers.schema import (
+from .helpers.base_tool import BaseTool
+from .helpers.fncall_prompt import NousFnCallPrompt
+from .helpers.schema import (
     ContentItem,
     Message,
 )

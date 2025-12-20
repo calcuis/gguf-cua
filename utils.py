@@ -1,3 +1,4 @@
+
 def strip_url_query(url):
     return url.split("?", 1)[0]
 
